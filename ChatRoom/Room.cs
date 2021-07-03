@@ -13,6 +13,7 @@ namespace ChatRoom
     public partial class Room : Form
     {
         private string username;
+        private Boolean isInitial = true;
         public Room(string username)
         {
             this.username = username;
@@ -55,10 +56,14 @@ namespace ChatRoom
                     row = message.user.username + ":" + message.message;
                 }
 
-                result += row + "\n";
+                result += row + Environment.NewLine;
             }
 
-            if (!this.label3.Text.Equals(result)) this.label3.Text = result;
+            if (!this.textBox1.Text.Equals(result))
+            {
+                this.textBox1.Text = "";
+                this.textBox1.AppendText(result);
+            }
         }
 
         public void RefreshActiveList()
@@ -77,6 +82,13 @@ namespace ChatRoom
             this.RefreshActiveList();
 
             this.RefreshMessages();
+
+            if (isInitial)
+            {
+                this.textBox1.SelectionStart = this.textBox1.TextLength;
+                this.textBox1.ScrollToCaret();
+                this.isInitial = false;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
