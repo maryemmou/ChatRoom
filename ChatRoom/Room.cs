@@ -17,6 +17,7 @@ namespace ChatRoom
         {
             this.username = username;
             InitializeComponent();
+            this.label1.Text = this.username;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,11 +39,26 @@ namespace ChatRoom
 
         public void RefreshMessages()
         {
-            this.listView1.Items.Clear();
+            string result = "";
             foreach (Message message in MessageController.getMessages())
             {
-                this.listView1.Items.Add(new ListViewItem(message.user.username + ":" + message.message));
+                string row = ""; 
+                if (message.message.Equals("__joined__"))
+                {
+                    row = "User " + message.user.username + " has joined the chat. 🎉";
+                }else if (message.message.Equals("__left__"))
+                {
+                    row = "User " + message.user.username + " has left the chat 👋";
+                }
+                else
+                {
+                    row = message.user.username + ":" + message.message;
+                }
+
+                result += row + "\n";
             }
+
+            if (!this.label3.Text.Equals(result)) this.label3.Text = result;
         }
 
         public void RefreshActiveList()
@@ -50,7 +66,7 @@ namespace ChatRoom
             string result = "";
             foreach (User user in UserController.getActiveUsers())
             {
-                result += user.username + "\n";
+                result += "✔ " + user.username + "\n";
             }
 
             if (!result.Equals(this.activeLabel.Text)) this.activeLabel.Text = result;
@@ -74,6 +90,11 @@ namespace ChatRoom
         {
             this.RefreshActiveList();
             this.RefreshMessages();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -40,7 +40,7 @@ namespace ChatRoom
             this.button2 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -50,10 +50,11 @@ namespace ChatRoom
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.back);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(-1, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1063, 67);
             this.panel1.TabIndex = 0;
@@ -61,7 +62,7 @@ namespace ChatRoom
             // back
             // 
             this.back.Location = new System.Drawing.Point(905, 16);
-            this.back.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.back.Margin = new System.Windows.Forms.Padding(4);
             this.back.Name = "back";
             this.back.Size = new System.Drawing.Size(147, 30);
             this.back.TabIndex = 1;
@@ -72,29 +73,31 @@ namespace ChatRoom
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(441, 12);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(14, 16);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 39);
+            this.label1.Size = new System.Drawing.Size(0, 37);
             this.label1.TabIndex = 0;
-            this.label1.Text = "My Chat";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // splitContainer1
             // 
             this.splitContainer1.Location = new System.Drawing.Point(-1, 67);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.LightGray;
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.White;
             this.splitContainer1.Panel1.Controls.Add(this.activeLabel);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.listView1);
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.vScrollBar1);
             this.splitContainer1.Panel2.Controls.Add(this.button2);
             this.splitContainer1.Panel2.Controls.Add(this.richTextBox1);
@@ -110,7 +113,7 @@ namespace ChatRoom
             this.activeLabel.Location = new System.Drawing.Point(19, 47);
             this.activeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.activeLabel.Name = "activeLabel";
-            this.activeLabel.Size = new System.Drawing.Size(0, 17);
+            this.activeLabel.Size = new System.Drawing.Size(0, 25);
             this.activeLabel.TabIndex = 1;
             this.activeLabel.Click += new System.EventHandler(this.label3_Click);
             // 
@@ -121,7 +124,7 @@ namespace ChatRoom
             this.label2.Location = new System.Drawing.Point(65, 4);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(176, 25);
+            this.label2.Size = new System.Drawing.Size(255, 36);
             this.label2.TabIndex = 0;
             this.label2.Text = "Connected users";
             // 
@@ -135,7 +138,7 @@ namespace ChatRoom
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(587, 370);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 33);
             this.button2.TabIndex = 2;
@@ -146,7 +149,7 @@ namespace ChatRoom
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(4, 360);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(560, 51);
             this.richTextBox1.TabIndex = 1;
@@ -158,26 +161,25 @@ namespace ChatRoom
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // listView1
+            // label3
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(16, 8);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(649, 340);
-            this.listView1.TabIndex = 4;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 25);
+            this.label3.TabIndex = 4;
             // 
             // Room
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 588);
+            this.BackgroundImage = global::ChatRoom.Properties.Resources.whatsapp;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(1061, 484);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Room";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Room_Load);
@@ -186,6 +188,7 @@ namespace ChatRoom
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -204,6 +207,6 @@ namespace ChatRoom
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label activeLabel;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label label3;
     }
 }

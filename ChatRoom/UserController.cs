@@ -33,6 +33,9 @@ namespace ChatRoom
                 }
                 dr.Close();
             }
+
+
+            MessageController.Send("__joined__", username);
         }
 
         public static void Leave(string username)
@@ -43,6 +46,8 @@ namespace ChatRoom
                 cmd.Parameters.AddWithValue("@Username", username);
                 cmd.ExecuteNonQuery();
             }
+
+            MessageController.Send("__left__", username);
         }
 
         public static List<User> getActiveUsers()
